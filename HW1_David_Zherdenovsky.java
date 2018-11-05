@@ -45,10 +45,11 @@ public class HW1_David_Zherdenovsky {
 		int p2count =0;
 		while(!guessRight) {
 			if (p1turn = true) {
-				if(p1count<1) {
+				if(p1count<1) {//if it is the first turn i need to makes sure the program won't add
+					           //any unnecessary text.
 					String pickStr = JOptionPane.showInputDialog(null, player1 + " please guess a number!");
 					pick1 = Integer.parseInt(pickStr);
-				}else {
+				}else {//here we use the hints
 				if(pick2<answer) {
 					String pickStr = JOptionPane.showInputDialog(null, player1 + " please guess a number and don't forget that "+pick2+" is lower than my number.");
 					pick1 = Integer.parseInt(pickStr);
@@ -61,22 +62,23 @@ public class HW1_David_Zherdenovsky {
 				}
 				}
 				//-------------------------------------------------------------------------------------------------------------------------------------------------------------
-				if (pick1 == answer) {
+				if (pick1 == answer) {//checking if the input is right or not
 					JOptionPane.showMessageDialog(null, "WOW "+player1+"! You did it! it's the number i chose! \nIt took you "+(p1count+1)+" turns to catch me!");
 					System.exit(0);
 				}else if(pick1<answer){
 					p1count ++;
-					JOptionPane.showMessageDialog(null, "Sorry "+player1+", my number is higher. "+player2+" it's your turn now!");
+					
 					p2turn = true;
 					p1turn = false;
 				}else {
 					p1count++;
-					JOptionPane.showMessageDialog(null, "Sorry "+player1+", my number is lower. "+player2+" it's your turn now!");
+					
 					p2turn = true;
 					p1turn = false;
 				}
 				//---------------------------------------------------------------------------------------------------------------------------------------------------------------
-				if (p2turn = true) {
+				if (p2turn = true) {/*all goes again for player 2 
+					(i could use if(p1turn=false) but i wanted to make sure i will find my self faster and easier)*/
 					if (pick1>answer) {
 						String pickStr2 = JOptionPane.showInputDialog(null, player2 + " please guess a number, and don't forget that "+pick1+" is higher than my number.");
 						pick2 = Integer.parseInt(pickStr2);
@@ -90,12 +92,12 @@ public class HW1_David_Zherdenovsky {
 						System.exit(0);
 					}else if(pick2<answer){
 						p2count++;
-						JOptionPane.showMessageDialog(null, "Sorry "+player2+", my number is higher. "+player1+" it's your turn now!");
+						
 						p1turn = true;
 						p2turn = false;
 					}else {
 						p2count++;
-						JOptionPane.showMessageDialog(null, "Sorry "+player2+", my number is lower. "+player1+" it's your turn now!");
+						
 						p1turn = true;
 						p2turn = false;
 					}
